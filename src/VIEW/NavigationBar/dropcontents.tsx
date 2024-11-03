@@ -4,31 +4,24 @@ import { useRecoilState } from "recoil"
 
 function Contents(){
     const [hover, setHover] = useRecoilState(hoverState);
-    
+
     return (
         <div>
           <span 
             className="text-xs hover:underline mr-8"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
+            onMouseEnter={() => setHover(true)}>
             스토어
           </span>
           <span 
             className="text-xs hover:underline mr-8"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
+            onMouseEnter={() => setHover(true)}>
             게시판
           </span>
           <span 
             className="text-xs hover:underline mr-8"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
+            onMouseEnter={() => setHover(true)}>
             캠페인
           </span>
-    
           {hover && (
             <motion.div
               initial={{ opacity: 0, y: -10 }} // 초기 상태

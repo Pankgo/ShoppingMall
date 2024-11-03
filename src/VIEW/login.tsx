@@ -6,7 +6,8 @@ import "../Style/common.css"
 export default function Login() {
   const [isUser, setIsUser] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false); // 애니메이션 상태 추가    
-  const handleLogin = (e) => {      
+  
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {      
     e.preventDefault(); // 폼의 기본 동작 막기
 };
 
@@ -26,7 +27,7 @@ export default function Login() {
 
   return (
     <div>
-      <div className="flex w-[50vw] h-[40vh] absolute border-none bg-[#F5F5F5] rounded-tl-[10px] rounded-bl-[10px] left-[25%] top-[20%]">
+      <div className="flex w-[50vw] h-[40vh] mt-20 mb-32 ml-64 border-none bg-[#F5F5F5] rounded-tl-[10px] rounded-bl-[10px] ">
         <AnimatePresence>
           {isUser ? (
             <>
@@ -38,7 +39,7 @@ export default function Login() {
                 transition={{ duration: 0.3 }}
               >
                 <form onSubmit={handleLogin}>
-                  <h1 class="text-center mt-2">Sign In</h1>
+                  <h1 className="text-center mt-2">Sign In</h1>
                   <input
                     type="text"
                     className={`w-3/5 h-[6vh] rounded-[10px] border-[0.5px] ml-16 mt-[2%] text-left shadow-lg text-[10px]`}
@@ -83,7 +84,7 @@ export default function Login() {
                 animate={{ x: isAnimating ? -50 : 0 }} // 애니메이션
                 exit={{ x: -50 }} // 오른쪽으로 나가기
                 transition={{ duration: 0.3 }}
-                class={`w-full text-center text-white text-2xl font-bold 
+                className={`w-full text-center text-white text-2xl font-bold 
                   content-center h-full rounded-tl-[10px] rounded-bl-[10px] bg-gradient-to-r from-custom-start to-custom-end`}>
                   FirstFloor
                 </motion.div>
@@ -95,7 +96,7 @@ export default function Login() {
                 transition={{ duration: 0.3 }}
               >
                 <form onSubmit={handleLogin}>
-                  <h1 class = "text-center mt-2">CREATE</h1>
+                  <h1 className = "text-center mt-2">CREATE</h1>
                   <div className="flex">
                     <input
                       type="text"

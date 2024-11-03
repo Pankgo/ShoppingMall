@@ -10,8 +10,8 @@
     display: grid;
     place-items: center;
     position: fixed;
-    bottom : 5vh;
-    right : 6vw;
+    bottom : 10vh;
+    right : 1vw;
     color : white;
 }
 

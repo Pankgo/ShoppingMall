@@ -1,6 +1,6 @@
 import "../Style/home.css"
 import "../Style/common.css"
-import NaviBar from"./NavigationBar/naviBar"
+import NaviBar from "./NavigationBar/naviBar"
 import Exportbtt from "./ExportButton/exportbtt"
 import ImgSlide from "./Slideimg/imgSlide"
 import Introduce from "./Introduce/introduce";
@@ -16,11 +16,12 @@ export default function Home() {
         <div className="home_background">
             <NaviBar/>
             <Exportbtt/>
-            {isLogin ? 
+            {!isLogin ? 
             <>
             <ImgSlide/>
             <Introduce/></>
-            :  <Login/>}
+            :
+            <Login/>}
             <Footer/>
         </div>
         

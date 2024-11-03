@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Exportbtt(){
  return(
-    <label className = "btn_container"> <Link to = {`/export`} className="selectHead">전송</Link></label>
+    <label className = "btn_container"> <Link to = {`/export`} className="selectHead">연락</Link></label>
  )
 }
 

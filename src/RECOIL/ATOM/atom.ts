@@ -6,8 +6,8 @@ export const hoverState = atom({
 });
 
 export const userIDState = atom({
-  key: 'userIDstate', // 고유한 ID
-  default: "", // 기본값
+  key: 'userIDstate', 
+  default: "pankgo", 
 });
 
 export const isLoginCheck = atom({
