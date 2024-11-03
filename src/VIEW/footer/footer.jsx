@@ -2,7 +2,7 @@ function Footer(){
 
     return(
         <>
-            <div class = 'flex w-full h-28 bg-black text-white text-8px items-center  '>
+            <div class = 'flex absolute bottom- -20 w-full h-28 bg-black text-white text-8px items-center  '>
                 <div class = ' ml-20'>
                     Information<br/>
                     Company : FLOOR cooperation<br/>

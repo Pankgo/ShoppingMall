@@ -1,25 +1,28 @@
-import React, { useState } from "react";
 import "../Style/home.css"
 import "../Style/common.css"
 import NaviBar from"./NavigationBar/naviBar"
 import Exportbtt from "./ExportButton/exportbtt"
 import ImgSlide from "./Slideimg/imgSlide"
 import Introduce from "./Introduce/introduce";
-import Footer from "./footer/footer";
+import Footer from "./footer/footer"; 
+import Login from "./login"
+import { isLoginCheck } from "../RECOIL/ATOM/atom"
+import { useRecoilState } from "recoil"
 
-function Home() {
-    const Img = ["MODEL1.jpg","MODEL2.jpg","MODEL3.jpg","MODEL4.jpg","MODEL5.jpg"];
-    const [imgcount,useimgcount] = useState(3);
+export default function Home() {
+
+    const [isLogin, setIsLogin] = useRecoilState(isLoginCheck);
     return (
         <div className="home_background">
             <NaviBar/>
             <Exportbtt/>
+            {isLogin ? 
+            <>
             <ImgSlide/>
-            <Introduce/>
+            <Introduce/></>
+            :  <Login/>}
             <Footer/>
         </div>
         
     );
-}
-
-export default Home;
+};

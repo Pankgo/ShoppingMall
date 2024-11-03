@@ -1,62 +1,142 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion , AnimatePresence } from 'framer-motion';
 import "../Style/login.css"
 import "../Style/common.css"
-//import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-function Login() {
-  const [userId, setUserId] = useState("");
-  const [password, setPassword] = useState("");
-   
-        const currentURL = useNavigate(); //현재 url 주소 가져오기
+export default function Login() {
+  const [isUser, setIsUser] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false); // 애니메이션 상태 추가    
+  const handleLogin = (e) => {      
+    e.preventDefault(); // 폼의 기본 동작 막기
+};
 
-
-        const Idtype = (e) => {
-          setUserId(e.target.value)
-        }
-        const Passwordtype = (e) => {
-            setPassword(e.target.value)
-        }
-
-        // const logincheck = async () => {
-        //     try {
-        //       console.log(userId,password);
-        //       const response = await axios.post('http://localhost:3001/login', {
-        //         loginId: userId,
-        //         password: password,
-        //       });
-        //       console.log(response.data);
-
-        //       if (response.data.result) {
-        //           // 로그인 성공 시 홈페이지로 이동
-        //           currentURL("/home");
-        //       } else {
-        //           // 로그인 실패 시 팝업으로 메시지 표시
-        //           alert('로그인 실패: 아이디 또는 비밀번호가 올바르지 않습니다.');
-        //       }
-        //     } catch (error) {
-        //       console.error("Error fetching data:", error);
-        //     }
-        //   };
-        
-          const handleLogin = (e) => {
-            e.preventDefault(); // 폼의 기본 동작 막기
-            logincheck();
-          };
-        
+  // isUser값 바뀔때마다 업데이트
+  useEffect (() =>{ 
+    console.log("업데이트");
+  },[isUser]);
 
 
-    return (
-          <div>
-                <div className='logincontainer'>
-                  <form onSubmit={handleLogin}>
-                      <h1 className='loginHead'>Sign In</h1>
-                      <input type = "text"  onChange = {Idtype} className = "loginbox" placeholder="  이름"></input>
-                      <input type = "password" onChange = {Passwordtype} className = "loginbox" placeholder="  개인키입력"></input>
-                      <button type = "submit" className="loginbutton">signIn</button> 
-                  </form>
-                </div>
-          </div>
-    );
-}
-export default Login
+  const changeForm = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsUser(!isUser);
+      setIsAnimating(false);
+    }, 300); // 애니메이션의 지속 시간과 맞춰줍니다.
+  };
+
+  return (
+    <div>
+      <div className="flex w-[50vw] h-[40vh] absolute border-none bg-[#F5F5F5] rounded-tl-[10px] rounded-bl-[10px] left-[25%] top-[20%]">
+        <AnimatePresence>
+          {isUser ? (
+            <>
+              <motion.div
+                key="login"
+                initial={{ x: 0 }} // 처음 위치
+                animate={{ x: isAnimating ? -50 : 0 }} // 왼쪽으로 애니메이션
+                exit={{ x: 50 }} // 왼쪽으로 나가기
+                transition={{ duration: 0.3 }}
+              >
+                <form onSubmit={handleLogin}>
+                  <h1 class="text-center mt-2">Sign In</h1>
+                  <input
+                    type="text"
+                    className={`w-3/5 h-[6vh] rounded-[10px] border-[0.5px] ml-16 mt-[2%] text-left shadow-lg text-[10px]`}
+                    placeholder="아이디입력"
+                  />
+                  <input
+                    type="password"
+                    className={`w-3/5 h-[6vh] rounded-[10px] border-[0.5px] ml-16 mt-[2%] text-left shadow-lg text-[10px]`}
+                    placeholder="비밀번호입력"
+                  />
+                  <button
+                    type="submit"
+                    className="shadow-lg w-3/5 h-[6vh] rounded-[20px] bg-gradient-to-r from-custom-start to-custom-end hover:from-hover-start from-5% hover:to-hover-end mt-5 ml-16 border-[0.5px] text-white text-sm"
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    type="button"
+                    onClick={changeForm}
+                    className="shadow-lg w-3/5 h-[6vh] rounded-[20px] bg-gradient-to-r from-custom-start to-custom-end hover:from-hover-start from-30% hover:to-hover-end mt-1 ml-16 border-[0.5px] text-white text-sm"
+                  >
+                    Create
+                  </button>
+                </form>
+              </motion.div>
+              <motion.div
+                className="w-full text-center text-white text-2xl font-bold content-center h-full rounded-tr-[10px] rounded-br-[10px] bg-gradient-to-r from-custom-start to-custom-end"
+                key="signup"
+                initial={{ x: 0 }} // 처음 위치
+                animate={{ x: isAnimating ? 50 : 0 }} // 오른쪽으로 애니메이션
+                exit={{ x: -50 }} // 오른쪽으로 나가기
+                transition={{ duration: 0.3 }}
+              >
+                FirstFloor
+              </motion.div>
+            </>
+          ) : (
+            <>
+                <motion.div 
+                key="signup"
+                initial={{ x: -50 }} // 처음에 왼쪽에서 들어오기
+                animate={{ x: isAnimating ? -50 : 0 }} // 애니메이션
+                exit={{ x: -50 }} // 오른쪽으로 나가기
+                transition={{ duration: 0.3 }}
+                class={`w-full text-center text-white text-2xl font-bold 
+                  content-center h-full rounded-tl-[10px] rounded-bl-[10px] bg-gradient-to-r from-custom-start to-custom-end`}>
+                  FirstFloor
+                </motion.div>
+                <motion.div
+                key="login"
+                initial={{ x: 0 }} // 처음 위치
+                animate={{ x: isAnimating ? 50 : 0 }} // 왼쪽으로 애니메이션
+                exit={{ x: 50 }} // 왼쪽으로 나가기
+                transition={{ duration: 0.3 }}
+              >
+                <form onSubmit={handleLogin}>
+                  <h1 class = "text-center mt-2">CREATE</h1>
+                  <div className="flex">
+                    <input
+                      type="text"
+                      className={`w-[15vw] h-[6vh] rounded-[10px] border-[0.5px] ml-2 mt-[2%] text-left shadow-lg text-[10px]`}
+                      placeholder="아이디입력"/>
+                    <input
+                      type="password"
+                      className={`w-[15vw] h-[6vh] rounded-[10px] border-[0.5px] 
+                      ml-2 mt-[2%] mr-2 text-left shadow-lg text-[10px]`}
+                      placeholder="비밀번호입력"/>
+                  </div>
+                  <div className="flex">
+                    <input
+                      type="text"
+                      className={`w-[15vw] h-[6vh] rounded-[10px] border-[0.5px] ml-2 mt-[2%] text-left shadow-lg text-[10px]`}
+                      placeholder="이름입력"
+                    />
+                    <input
+                      type="text"
+                      className={`w-[15vw] h-[6vh] rounded-[10px] border-[0.5px] 
+                        ml-2 mt-[2%] mr-2 text-left shadow-lg text-[10px]`}
+                      placeholder="휴대폰입력"/>
+                  </div>
+                    <button type="submit"
+                      className="shadow-lg w-3/5 h-[6vh] rounded-[20px] 
+                      bg-gradient-to-r from-custom-start to-custom-end hover:from-hover-start from-30% 
+                      hover:to-hover-end mt-3 ml-16 border-[0.5px] text-white text-sm"
+                    >CREATE</button>
+                    <button type="button"
+                      onClick={changeForm}
+                      className="shadow-lg w-3/5 h-[6vh] rounded-[20px] bg-gradient-to-r
+                      from-custom-start to-custom-end hover:from-hover-start from-30% 
+                      hover:to-hover-end mt-1 ml-16 border-[0.5px] text-white text-sm"
+                    >CANCEL</button>
+                </form></motion.div>
+
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+
+};
