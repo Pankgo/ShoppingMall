@@ -8,6 +8,8 @@
     height: 100vh; /* 전체 높이 */
     object-fit: cover; /* 비율 유지하며 이미지 잘림 */
     position: absolute; /* 부모 요소에 대해 절대 위치 */
+    left:0;
+    top:0;
     opacity: 0; /* 초기 상태: 보이지 않음 */
     transition: opacity 1s ease; /* 페이드 효과를 위한 전환 */
     /*

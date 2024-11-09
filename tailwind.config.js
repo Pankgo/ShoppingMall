@@ -3,9 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      
       fontSize: {
         '8px': '8px', // 14px 폰트 사이즈
         '10px': '10px',
+        xs : '0.6rem'
     },
     colors: { //로그인, 회원가입코드
       'custom-start': '#bdc3c7',

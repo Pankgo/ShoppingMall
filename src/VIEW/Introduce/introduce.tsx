@@ -17,7 +17,7 @@ function Introduce(){
           >
         <div className = 'flex mt-28'>
             <img src={img3} className='mt-3 ml-20 mr-24 w-1/3'/>
-            <div><hr className ="absolute left-20vw border border-gray-500 w-px h-[180%] " /></div>
+            <div><hr className ="absolute left-[50vw] top-o border border-gray-500 w-px h-[169vh] " /></div>
             <div className = 'flex-1 text-center'>
                 <span className = 'text-10px'>영화 '노팅 힐'을 참 좋아합니다.<br/>
                 이야기와 영상미는 물론 '휴 그랜트'의 나무랄 데 없는 스타일링은<br/>

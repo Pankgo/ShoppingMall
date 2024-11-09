@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { hoverState } from '../../RECOIL/ATOM/atom';
 import { useRecoilState } from "recoil"
-
+import { Link } from "react-router-dom";
 function Contents(){
     const [hover, setHover] = useRecoilState(hoverState);
 
@@ -33,15 +33,15 @@ function Contents(){
               onMouseLeave={() => setHover(false)} // 드롭다운에서 마우스가 나갈 때
             >
               <div>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                <Link to = {`/store`} className="block px-4 py-2 text-xs text-gray-700 hover:bg-gray-100">
                   옵션 1
-                </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                </Link>
+                <Link to = {`/store`} className="block px-4 py-2 text-xs text-gray-700 hover:bg-gray-100">
                   옵션 2
-                </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                </Link>
+                <Link to = {`/store`} className="block px-4 py-2 text-xs text-gray-700 hover:bg-gray-100">
                   옵션 3
-                </a>
+                </Link>
               </div>
             </motion.div>
           )}

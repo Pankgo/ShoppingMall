@@ -7,7 +7,7 @@ export const hoverState = atom({
 
 export const userIDState = atom({
   key: 'userIDstate', 
-  default: "pankgo", 
+  default: "", 
 });
 
 export const isLoginCheck = atom({
