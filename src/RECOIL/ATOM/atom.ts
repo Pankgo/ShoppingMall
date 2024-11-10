@@ -14,3 +14,14 @@ export const isLoginCheck = atom({
   key : "isLoginCheck",
   default : false
 });
+
+export const imgNum = atom({
+  key : "imgNum",
+  default : 0
+});
+
+
+export const isclickCheck = atom({
+  key : "isclickCheck",
+  default : false
+});
